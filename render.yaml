@@ -27,5 +27,3 @@ services:
     healthCheckPath: /web
     autoDeploy: true
     numInstances: 1
-    buildCommand: docker build -t odoo .
-    startCommand: odoo --config=/etc/odoo/odoo.conf
