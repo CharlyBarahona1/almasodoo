@@ -10,9 +10,20 @@ RUN apt-get update && apt-get install -y \
     pip3 install wheel && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Crear directorio para addons y establecer permisos
+# Crear directorios necesarios y establecer permisos
 RUN mkdir -p /mnt/extra-addons && \
-    chown -R odoo:odoo /mnt/extra-addons
+    mkdir -p /tmp/odoo && \
+    chown -R odoo:odoo /mnt/extra-addons && \
+    chown -R odoo:odoo /tmp/odoo
+
+# Copiar archivo de configuración
+COPY odoo.conf /etc/odoo/odoo.conf
 
 # Cambiar de nuevo al usuario odoo
 USER odoo
+
+# Exponer el puerto
+EXPOSE 10000
+
+# Comando para iniciar Odoo
+CMD ["odoo", "--config=/etc/odoo/odoo.conf"]
