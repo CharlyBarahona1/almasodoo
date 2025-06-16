@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: odoo-17
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    buildFilter:
+      paths:
+        - Dockerfile
+        - odoo.conf
+    envVars:
+      - key: DB_HOST
+        value: dpg-d188sajipnbc73bagf00-a.oregon-postgres.render.com
+      - key: DB_PORT
+        value: 5432
+      - key: DB_USER
+        value: almas_jp5q_user
+      - key: DB_PASSWORD
+        value: o89f8I6sJAPt1E6NRi27sF9MtYrZU7Pv
