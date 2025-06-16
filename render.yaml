@@ -27,7 +27,3 @@ services:
     healthCheckPath: /web
     autoDeploy: true
     numInstances: 1
-    disk:
-      name: odoo-data
-      mountPath: /var/lib/odoo
-      sizeGB: 1
