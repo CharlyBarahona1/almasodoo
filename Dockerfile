@@ -10,5 +10,9 @@ RUN apt-get update && apt-get install -y \
     pip3 install wheel && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Crear directorio para addons y establecer permisos
+RUN mkdir -p /mnt/extra-addons && \
+    chown -R odoo:odoo /mnt/extra-addons
+
 # Cambiar de nuevo al usuario odoo
 USER odoo

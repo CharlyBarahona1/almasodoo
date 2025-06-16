@@ -18,3 +18,16 @@ services:
         value: almas_jp5q_user
       - key: DB_PASSWORD
         value: o89f8I6sJAPt1E6NRi27sF9MtYrZU7Pv
+      - key: DB_NAME
+        value: almas_jp5q
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+    healthCheckPath: /web
+    autoDeploy: true
+    numInstances: 1
+    disk:
+      name: odoo-data
+      mountPath: /var/lib/odoo
+      sizeGB: 1
