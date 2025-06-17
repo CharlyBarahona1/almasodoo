@@ -81,5 +81,9 @@ USER odoo
 # Exponer puerto
 EXPOSE 10000
 
+# Script de inicio
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # Iniciar Odoo
-CMD ["odoo", "--config=/etc/odoo/odoo.conf"]
+CMD ["/start.sh"]
