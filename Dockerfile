@@ -72,18 +72,17 @@ RUN useradd -ms /bin/bash odoo
 RUN mkdir -p /mnt/extra-addons /tmp/odoo && \
     chown -R odoo:odoo /mnt/extra-addons /tmp/odoo
 
-# Copiar configuración
+# Copiar configuración y script de inicio
 COPY odoo.conf /etc/odoo/odoo.conf
+COPY start.sh /start.sh
+RUN chmod +x /start.sh && \
+    chown odoo:odoo /start.sh
 
 # Cambiar al usuario odoo
 USER odoo
 
 # Exponer puerto
 EXPOSE 10000
-
-# Script de inicio
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
 
 # Iniciar Odoo
 CMD ["/start.sh"]
