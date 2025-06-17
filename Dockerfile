@@ -60,8 +60,10 @@ RUN pip3 install --no-cache-dir \
     requests-toolbelt==1.0.0 \
     zeep==4.2.1
 
-# Instalar Odoo
-RUN pip3 install --no-cache-dir odoo==18.0
+# Clonar e instalar Odoo
+RUN git clone --depth 1 --branch 18.0 https://github.com/odoo/odoo.git /opt/odoo && \
+    cd /opt/odoo && \
+    pip3 install -e .
 
 # Crear usuario odoo
 RUN useradd -ms /bin/bash odoo
